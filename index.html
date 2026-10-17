@@ -8,128 +8,143 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1b1340;--panel:#251a55;--text:#f6efe0;--muted:#bdb3dc;--accent:#f2a900;--line:#3a2f70}
-body[data-mood="reading"]{--accent:#4fd1b5}
-body[data-mood="dancing"]{--accent:#ff6a9a}
-body[data-mood="listening"]{--accent:#f2a900}
+:root{--bg:#1b1340;--panel:#251a55;--text:#f6efe0;--muted:#bdb3dc;--gold:#f2a900;--pink:#ff6a9a;--teal:#4fd1b5;--line:#3a2f70}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--text);font:400 1rem/1.7 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
-a{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.wrap{max-width:720px;margin:0 auto;padding:0 1.25rem}
-nav{border-bottom:1px solid var(--line)}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.75 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+a{color:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
 nav .wrap{display:flex;gap:1.25rem;overflow-x:auto;padding-top:.9rem;padding-bottom:.9rem;white-space:nowrap}
 nav a{color:var(--muted);text-decoration:none}
-nav a:hover{color:var(--accent)}
-header{padding:3.5rem 0 2.5rem}
-h1{font:400 clamp(2.4rem,10vw,3.8rem)/1.1 "Rozha One",Georgia,serif;margin-bottom:.6rem}
-.sub{color:var(--accent);font-weight:500}
-.intro{margin-top:1rem;max-width:46ch}
-section{padding:2rem 0;border-top:1px solid var(--line)}
-h2{font-size:1.4rem;margin-bottom:.9rem}
+nav a:hover{color:var(--gold)}
+header{padding:3rem 0 2rem}
+.hero{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--pink));color:#1b1340;display:flex;align-items:center;justify-content:center;font:400 2.6rem "Rozha One",Georgia,serif;flex:none}
+h1{font:400 clamp(2.2rem,9vw,3.6rem)/1.1 "Rozha One",Georgia,serif}
+.sub{color:var(--gold);font-weight:500;margin-top:.3rem}
+.intro{margin-top:1.4rem;max-width:52ch}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.8rem}
+.stat{background:var(--panel);border-radius:12px;padding:.9rem .6rem;text-align:center;border-top:4px solid var(--gold)}
+.stat:nth-child(2){border-color:var(--pink)}.stat:nth-child(3){border-color:var(--teal)}
+.stat b{display:block;font-size:1.25rem}
+.stat span{font-size:.85rem;color:var(--muted);line-height:1.3;display:block}
+section{padding:2.2rem 0;border-top:1px solid var(--line)}
+h2{font-size:1.5rem;margin-bottom:1rem}
 p+p{margin-top:.9rem}
-.item{margin-bottom:1.4rem}
-.item h3{font-size:1.05rem}
-.when{color:var(--muted);font-size:.95rem;margin-bottom:.3rem}
-ul.plain{padding-left:1.2rem;margin-top:.4rem}
-h3.g{font-size:1rem;margin:1rem 0 .4rem;color:var(--muted);font-weight:500}
-.tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0}
-.tags li{background:var(--panel);border-radius:6px;padding:.2rem .65rem;font-size:.95rem}
-.moods{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0}
-.moods button{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.4rem 1rem;cursor:pointer}
-.moods button[aria-pressed="true"]{background:var(--accent);color:#1b1340;border-color:var(--accent);font-weight:700}
-#moodText{border-left:3px solid var(--accent);padding-left:1rem;min-height:4.5rem}
-.contact a{margin-right:1.2rem}
+.line{display:flex;gap:.8rem;align-items:center}
+.ico{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex:none}
+.timeline{border-left:3px solid var(--line);margin-left:.7rem;padding-left:1.5rem}
+.job{position:relative;margin-bottom:2rem}
+.job::before{content:"";position:absolute;left:calc(-1.5rem - 9px);top:.45rem;width:15px;height:15px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+.job:nth-child(2)::before{background:var(--pink)}
+.job h3{font-size:1.15rem}
+.when{color:var(--gold);font-size:.95rem;margin-bottom:.4rem}
+ul.plain{padding-left:1.2rem;margin-top:.5rem}
+ul.plain li{margin-bottom:.3rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.2rem}
+.card .big{font-size:2rem;display:block;margin-bottom:.3rem}
+.card h3{font-size:1.1rem;margin-bottom:.4rem}
+.card p{font-size:.98rem;color:var(--text)}
+.card.a{border-bottom:4px solid var(--gold)}.card.b{border-bottom:4px solid var(--pink)}.card.c{border-bottom:4px solid var(--teal)}
+.skill{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1rem}
+.skill b{display:block}
+.skill span{color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin-top:.8rem}
+.tags li{background:var(--panel);border-radius:99px;padding:.25rem .8rem;font-size:.95rem;border:1px solid var(--line)}
+.contact a{display:inline-block;margin:.3rem 1.2rem .3rem 0;font-weight:700}
 footer{padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem}
 </style>
 </head>
-<body data-mood="listening">
+<body>
 <nav aria-label="Sections"><div class="wrap">
-  <a href="#about">About</a><a href="#work">Experience</a><a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#contact">Contact</a>
+  <a href="#about">About</a><a href="#work">Experience</a><a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#goals">Goals</a><a href="#contact">Contact</a>
 </div></nav>
 
 <header><div class="wrap">
-  <h1>Ananya Sharma</h1>
-  <p class="sub">MBA Tech (Data Science), 3rd year</p>
-  <p class="intro">I'm a management and data student who enjoys organising events and working with teams.</p>
+  <div class="hero">
+    <div class="avatar" aria-hidden="true">AS</div>
+    <div>
+      <h1>Ananya Sharma</h1>
+      <p class="sub">MBA Tech (Data Science), 3rd year</p>
+    </div>
+  </div>
+  <p class="intro">Hello! I study management and data science. I like to plan events, work with teams and use data to make good choices. I also love books, dance and Bollywood songs.</p>
+  <div class="stats">
+    <div class="stat"><b>3rd year</b><span>MBA Tech Data Science</span></div>
+    <div class="stat"><b>2 months</b><span>Data analyst internship</span></div>
+    <div class="stat"><b>Joint Secretary</b><span>Sports Committee</span></div>
+  </div>
 </div></header>
 
 <main class="wrap">
 <section id="about">
-  <h2>About</h2>
-  <p>I'm Ananya, a third-year MBA Tech student specialising in Data Science. I'm interested in how data and planning help teams make better decisions.</p>
-  <p>I like organising things and working with people. Outside college, I read, dance and listen to a lot of Bollywood music.</p>
+  <h2>About me</h2>
+  <p>My name is Ananya Sharma. I am in my third year of MBA Tech, and my subject is Data Science. This course teaches me two things: how to manage people and plans, and how to understand data.</p>
+  <p>I like to keep things organised. When I work in a team, I try to make sure everyone knows their task and feels heard. I think a good plan and good communication can solve many problems.</p>
+  <p>When I am not studying, I read books, dance and listen to Bollywood music. These things help me relax and keep me happy.</p>
 </section>
 
 <section id="work">
   <h2>Experience</h2>
-  <div class="item">
-    <h3>Data Analyst Intern, pharmaceutical company</h3>
-    <p class="when">2 months</p>
-    <p>Worked as a data analyst intern, using data analysis on company data and learning how it supports business decisions.</p>
-  </div>
-  <div class="item">
-    <h3>Joint Secretary, Sports Committee</h3>
-    <p class="when">Last year</p>
-    <p>Helped plan and run the college's sports events.</p>
-    <ul class="plain">
-      <li>Planned events and managed the budget</li>
-      <li>Divided tasks among team members</li>
-      <li>Reviewed each event afterwards to see what could be improved</li>
-    </ul>
+  <div class="timeline">
+    <div class="job">
+      <h3>Data Analyst Intern</h3>
+      <p class="when">Pharmaceutical company, 2 months</p>
+      <p>I worked as a data analyst intern in a pharmaceutical company. I used my Data Science studies in real work and saw how companies use data to take decisions.</p>
+      <ul class="plain">
+        <li>Worked with real company data</li>
+        <li>Learned how data helps a business</li>
+        <li>Learned to work with a professional team</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Joint Secretary, Sports Committee</h3>
+      <p class="when">College, last year</p>
+      <p>I was the Joint Secretary of the sports committee. I helped plan and run sports events for the college.</p>
+      <ul class="plain">
+        <li>Planned sports events</li>
+        <li>Managed the budget</li>
+        <li>Gave tasks to team members</li>
+        <li>Checked how each event went and what we could do better</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section id="skills">
   <h2>Skills</h2>
-  <h3 class="g">Planning and management</h3>
-  <ul class="tags">
-    <li>Sports event planning</li><li>Project management</li><li>Strategic planning</li>
-    <li>Budget management</li><li>Task delegation</li><li>Performance evaluation</li>
-  </ul>
-  <h3 class="g">Working with others</h3>
-  <ul class="tags">
-    <li>Organization</li><li>Team collaboration</li><li>Time management</li>
-    <li>Logical thinking</li><li>Communication</li><li>Empathy</li>
-  </ul>
+  <div class="skill"><div class="ico">📋</div><div><b>Planning and management</b><span>I can plan events, manage projects and make strategic plans. I can also manage a budget and check how well a team is doing.</span></div></div>
+  <ul class="tags"><li>Sports event planning</li><li>Project management</li><li>Strategic planning</li><li>Budget management</li><li>Task delegation</li><li>Performance evaluation</li></ul>
+  <div class="skill" style="margin-top:1.6rem"><div class="ico">🤝</div><div><b>Working with people</b><span>I stay organised, manage my time and work well in a team. I think in a logical way and I try to understand other people's feelings.</span></div></div>
+  <ul class="tags"><li>Organization</li><li>Team collaboration</li><li>Time management</li><li>Logical thinking</li><li>Communication</li><li>Empathy</li></ul>
 </section>
 
 <section id="interests">
   <h2>Interests</h2>
-  <p>I enjoy these three things the most. Tap one to read a bit more.</p>
-  <div class="moods" role="group" aria-label="Choose an interest">
-    <button type="button" data-mood="reading" aria-pressed="false">Reading</button>
-    <button type="button" data-mood="dancing" aria-pressed="false">Dancing</button>
-    <button type="button" data-mood="listening" aria-pressed="true">Music</button>
+  <p>These are the things I enjoy outside college.</p>
+  <div class="cards">
+    <div class="card a"><span class="big">🎵</span><h3>Bollywood music</h3><p>I listen to Bollywood songs almost every day. I listen when I study, when I travel and when I want to relax.</p></div>
+    <div class="card b"><span class="big">💃</span><h3>Dancing</h3><p>I love to dance. It is fun, it keeps me active and it helps me forget stress.</p></div>
+    <div class="card c"><span class="big">📚</span><h3>Reading books</h3><p>I enjoy reading books. Reading helps me learn new things and think in new ways.</p></div>
   </div>
-  <p id="moodText" aria-live="polite"></p>
+</section>
+
+<section id="goals">
+  <h2>What I want to do next</h2>
+  <p>I want to work in a job that uses both management and data. I want to keep learning, work with good teams and take on bigger projects.</p>
+  <p>I am happy to talk about internships, projects and new ideas.</p>
 </section>
 
 <section id="contact" class="contact">
   <h2>Contact</h2>
-  <p>You can reach me here.</p>
+  <p>You can contact me here.</p>
   <!-- TODO: replace these two links with your real email and LinkedIn -->
   <p><a href="mailto:ananyasharma3008@gmail.com">Email</a><a href="https://www.linkedin.com/in/ananya-sharma-b78493359/" target="_blank" rel="noopener">LinkedIn</a></p>
 </section>
 </main>
 
 <footer><div class="wrap">&copy; Ananya Sharma</div></footer>
-
-<script>
-const moods={
-  reading:"I like reading books in my free time. It helps me relax and see things from different points of view.",
-  dancing:"I enjoy dancing. It's a good way to take a break and stay active.",
-  listening:"I listen to Bollywood songs most days, whether I'm studying, travelling or just relaxing."
-};
-const text=document.getElementById("moodText");
-const btns=document.querySelectorAll(".moods button");
-function setMood(m){
-  document.body.dataset.mood=m;
-  text.textContent=moods[m];
-  btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.mood===m));
-}
-btns.forEach(b=>b.addEventListener("click",()=>setMood(b.dataset.mood)));
-setMood("listening");
-</script>
 </body>
 </html>
