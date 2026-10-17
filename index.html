@@ -7,6 +7,7 @@
 <meta name="description" content="Portfolio of Ananya Sharma, MBA Tech (Data Science) student.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  .me{width:120px;height:120px;border-radius:50%;object-fit:cover;flex:none}
 <style>
 :root{--bg:#1b1340;--panel:#251a55;--text:#f6efe0;--muted:#bdb3dc;--gold:#f2a900;--pink:#ff6a9a;--teal:#4fd1b5;--line:#3a2f70}
 *{box-sizing:border-box;margin:0}
@@ -55,7 +56,13 @@ ul.plain li{margin-bottom:.3rem}
 .tags li{background:var(--panel);border-radius:99px;padding:.25rem .8rem;font-size:.95rem;border:1px solid var(--line)}
 .contact a{display:inline-block;margin:.3rem 1.2rem .3rem 0;font-weight:700}
 footer{padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem}
+  .songs{padding-left:1.4rem;margin:1rem 0}
+.songs li{padding:.4rem 0;border-bottom:1px solid var(--line)}
+.songs li.on{color:var(--gold);font-weight:700}
+#shuffle{font:inherit;background:var(--gold);color:#1b1340;border:0;border-radius:6px;padding:.5rem 1.1rem;font-weight:700;cursor:pointer}
+#pick{margin-top:.8rem}
 </style>
+  
 </head>
 <body>
 <nav aria-label="Sections"><div class="wrap">
@@ -129,7 +136,14 @@ footer{padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem}
     <div class="card c"><span class="big">📚</span><h3>Reading books</h3><p>I enjoy reading books. Reading helps me learn new things and think in new ways.</p></div>
   </div>
 </section>
-
+<section id="playlist">
+  <h2>My Bollywood playlist</h2>
+  <p>These are songs I never get tired of. Press the button to pick one for me.</p>
+  <ol class="songs" id="songList"></ol>
+  <button type="button" id="shuffle">Pick a song</button>
+  <p id="pick"></p>
+</section>
+  
 <section id="goals">
   <h2>What I want to do next</h2>
   <p>I want to work in a job that uses both management and data. I want to keep learning, work with good teams and take on bigger projects.</p>
@@ -145,5 +159,17 @@ footer{padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem}
 </main>
 
 <footer><div class="wrap">&copy; Ananya Sharma</div></footer>
+  <script>
+const songs=["Theher Ja, By - Garvit and Priyansh","Ashke, Karan Aujla","Jahaan, Lost Stories"];
+const list=document.getElementById("songList");
+songs.forEach(s=>{const li=document.createElement("li");li.textContent=s;list.appendChild(li);});
+document.getElementById("shuffle").addEventListener("click",()=>{
+  const items=list.children;
+  for(const li of items)li.classList.remove("on");
+  const i=Math.floor(Math.random()*items.length);
+  items[i].classList.add("on");
+  document.getElementById("pick").textContent="Today I would listen to: "+songs[i];
+});
+</script>
 </body>
 </html>
